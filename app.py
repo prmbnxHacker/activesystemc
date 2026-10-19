@@ -171,7 +171,7 @@ def process_master_pdf(user_pdf_path, output_path, original_filename, ai_percent
     template_doc = fitz.open(TEMPLATE_FILE)
     page1_text = template_doc[0].get_text()
     
-    old_id_match = re.search(r"trn:oid:::\d:\d+", page1_text)
+    old_id_match = re.search(r"sirialid:::\d:\d+", page1_text)
     old_id = old_id_match.group(0) if old_id_match else None
     old_title_match = re.search(r"([^\n]+)\s+Aa Aa", page1_text)
     old_title = old_title_match.group(1).strip() if old_title_match else "Fresh Template"
