@@ -272,7 +272,7 @@ def process_master_pdf(user_pdf_path, output_path, original_filename, ai_percent
     for i, page in enumerate(template_doc):
         rect = page.rect
         header_height, footer_height = (42, 42) if i < 2 else (18, 18)
-        header_title = "Cover Page" if i == 0 else "AI Writing Overview" if i == 1 else "AI Writing Submission"
+        header_title = "Cover Page" if i == 0 else "AI academi.cx" if i == 1 else "academi.cx"
         header_text = f"Page {i + 1} of {len(template_doc)} - {header_title}"
         
         if i < 2:
@@ -291,11 +291,11 @@ def process_master_pdf(user_pdf_path, output_path, original_filename, ai_percent
                 page.insert_image(fitz.Rect(36, 748, 91, 764.5), filename=logo_path)
                 
             insert_pdf_text(page, fitz.Point(107, 34), header_text, fontsize=6.0, font_style="normal", color=(0, 0, 0))
-            insert_pdf_text(page, fitz.Point(467.5, 34), "Submission ID", fontsize=6.0, font_style="normal", color=(0, 0, 0))
+            insert_pdf_text(page, fitz.Point(467.5, 34), "academi sirial", fontsize=6.0, font_style="normal", color=(0, 0, 0))
             insert_pdf_text(page, fitz.Point(513.0, 34), new_id, fontsize=6.0, font_style="normal", color=(0, 0, 0))
 
             insert_pdf_text(page, fitz.Point(107, 758), header_text, fontsize=6.0, font_style="normal", color=(0, 0, 0))
-            insert_pdf_text(page, fitz.Point(467.5, 758), "Submission ID", fontsize=6.0, font_style="normal", color=(0, 0, 0))
+            insert_pdf_text(page, fitz.Point(467.5, 758), "academi sirial", fontsize=6.0, font_style="normal", color=(0, 0, 0))
             insert_pdf_text(page, fitz.Point(513.0, 758), new_id, fontsize=6.0, font_style="normal", color=(0, 0, 0))
         else:
             top_overlay_rect = fitz.Rect(0, 0, rect.width, 38)
@@ -313,11 +313,11 @@ def process_master_pdf(user_pdf_path, output_path, original_filename, ai_percent
                 page.insert_image(fitz.Rect(36, rect.height - 22, 91, rect.height - 7.5), filename=logo_path)
                 
             insert_pdf_text(page, fitz.Point(107, 21), header_text, fontsize=6.0, font_style="normal", color=(0, 0, 0))
-            insert_pdf_text(page, fitz.Point(467.5, 21), "Submission ID", fontsize=6.0, font_style="normal", color=(0, 0, 0))
+            insert_pdf_text(page, fitz.Point(467.5, 21), "academi sirial", fontsize=6.0, font_style="normal", color=(0, 0, 0))
             insert_pdf_text(page, fitz.Point(513.0, 21), new_id, fontsize=6.0, font_style="normal", color=(0, 0, 0))
 
             insert_pdf_text(page, fitz.Point(107, rect.height - 9), header_text, fontsize=6.0, font_style="normal", color=(0, 0, 0))
-            insert_pdf_text(page, fitz.Point(467.5, rect.height - 9), "Submission ID", fontsize=6.0, font_style="normal", color=(0, 0, 0))
+            insert_pdf_text(page, fitz.Point(467.5, rect.height - 9), "academi sirial", fontsize=6.0, font_style="normal", color=(0, 0, 0))
             insert_pdf_text(page, fitz.Point(513.0, rect.height - 9), new_id, fontsize=6.0, font_style="normal", color=(0, 0, 0))
 
         # Convert ALL colored AI highlights into 1 SINGLE unified Hex #C5E9F8 Cyan color
@@ -346,7 +346,7 @@ def process_master_pdf(user_pdf_path, output_path, original_filename, ai_percent
                     page.draw_rect(erase_rect, fill=(1, 1, 1), color=None, fill_opacity=1.0, overlay=False)
                     page.draw_rect(r, fill=cyan_color, color=None, fill_opacity=1.0, overlay=False)
 
-    template_doc.set_metadata({"producer": "pdf-lib (https://github.com/Hopding/pdf-lib)"})
+    template_doc.set_metadata({"producer": "pdf-lib (This file check by academi.cx)"})
     template_doc.save(output_path, deflate=True, garbage=4)
     template_doc.close()
     user_doc.close()
@@ -385,11 +385,11 @@ def apply_header_and_footer(input_pdf_path, output_path, shared_id):
             page.insert_image(fitz.Rect(36, rect.height - 22, 91, rect.height - 7.5), filename=logo_path)
 
         insert_pdf_text(page, fitz.Point(107, 21), header_text, fontsize=6.0, font_style="normal", color=(0, 0, 0))
-        insert_pdf_text(page, fitz.Point(467.5, 21), "Submission ID", fontsize=6.0, font_style="normal", color=(0, 0, 0))
+        insert_pdf_text(page, fitz.Point(467.5, 21), "academi sirial", fontsize=6.0, font_style="normal", color=(0, 0, 0))
         insert_pdf_text(page, fitz.Point(513.0, 21), shared_id, fontsize=6.0, font_style="normal", color=(0, 0, 0))
 
         insert_pdf_text(page, fitz.Point(107, rect.height - 9), header_text, fontsize=6.0, font_style="normal", color=(0, 0, 0))
-        insert_pdf_text(page, fitz.Point(467.5, rect.height - 9), "Submission ID", fontsize=6.0, font_style="normal", color=(0, 0, 0))
+        insert_pdf_text(page, fitz.Point(467.5, rect.height - 9), "academi sirial", fontsize=6.0, font_style="normal", color=(0, 0, 0))
         insert_pdf_text(page, fitz.Point(513.0, rect.height - 9), shared_id, fontsize=6.0, font_style="normal", color=(0, 0, 0))
 
         for a in list(page.annots()):
@@ -412,7 +412,7 @@ def apply_header_and_footer(input_pdf_path, output_path, shared_id):
                 erase_rect = fitz.Rect(r.x0 - 0.5, r.y0 - 0.5, r.x1 + 0.5, r.y1 + 2.5)
                 page.draw_rect(erase_rect, fill=(1, 1, 1), color=None, fill_opacity=1.0, overlay=False)
                 page.draw_rect(r, fill=cyan_color, color=None, fill_opacity=1.0, overlay=False)
-    doc.set_metadata({"producer": "pdf-lib (https://github.com/Hopding/pdf-lib)"})
+    doc.set_metadata({"producer": "pdf-lib (This file check by academi.cx)"})
     doc.save(output_path)
     doc.close()
     
